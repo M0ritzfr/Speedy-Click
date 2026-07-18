@@ -86,6 +86,8 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
   padding: 16px clamp(18px, 5vw, 48px);
   backdrop-filter: blur(14px);
   background: color-mix(in srgb, var(--bg) 72%, transparent);
@@ -116,6 +118,52 @@ body::before {
   object-fit: contain;
   /* schwarzes Logo → reinweiß auf dem farbigen Tile */
   filter: brightness(0) invert(1);
+}
+
+/* Obere Steuerung (Sprache + Theme) */
+.top-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Sprach-Umschalter */
+.lang-switch {
+  position: relative;
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--surface-brd);
+}
+.lang-switch button {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px; height: 34px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  border-radius: 999px;
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+  transition: color .25s ease;
+}
+.lang-switch button:hover { color: var(--text); }
+.lang-switch button.active { color: #fff; }
+.lang-thumb {
+  position: absolute;
+  z-index: 1;
+  top: 4px; left: 4px;
+  width: 44px; height: 34px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  box-shadow: 0 4px 12px rgba(var(--glow), 0.45);
+  transition: transform .28s cubic-bezier(.4, 1.3, .5, 1);
 }
 
 /* Theme-Umschalter */
